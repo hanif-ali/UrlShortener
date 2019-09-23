@@ -5,7 +5,6 @@ HOSTS = (
         ('Tinyurl', 'Tinyurl'),
         ('Isgd', 'Is.gd'),
 		    ('Bitly', 'Bit.ly'),
-        ('Google', 'Google URL Shortener'),
         ('Rebrandly', 'Rebrand.ly'),
         ('Madwire', 'm360.us'),
         ('Osdb', 'Osdb.link	')

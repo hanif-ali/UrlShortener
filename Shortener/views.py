@@ -16,14 +16,11 @@ from pyshorteners.exceptions import UnknownShortenerException
 
 
 BITLY_TOKEN = "19c73c3f96d4b2a64d0337ef7380cf0de313e8f7"
-GOOGLE_TOKEN = "AIzaSyCyj45kuk95kopaSuJ4NvErGMyTVV9i3n4"
 REBRANDLY_TOKEN = "b71d7dcfd2f14f0ca4f533bbd6fd226a"
 
 def worker(url, host):
     if host == "Bitly":
         shortener = Shortener("Bitly", timeout=10, bitly_token=BITLY_TOKEN)
-    elif host == "Google":
-        shortener = Shortener("Google", timeout=10, api_key=GOOGLE_TOKEN)
     elif host == "Rebrandly":
         shortener = Shortener(engine=Rebrandly, timeout=10, api_key=REBRANDLY_TOKEN)
     elif host == "Madwire":
@@ -55,18 +52,18 @@ def home(request):
 class UrlShortenerAPIViewSet(viewsets.ViewSet):
     """
     Shortens URL via a POST method.
-    
+
     Provide the following fields in your POST request:
-    "long_url": "URL to shorten, Example: https://www.youtube.com/watch?v=Y2VF8tmLFHw", 
+    "long_url": "URL to shorten, Example: https://www.youtube.com/watch?v=Y2VF8tmLFHw",
     "host": "Shortening service to use, must be one of: [hosts]"
-    
+
     Returns:
     "short_url": "Shortened URL"
     """
     hostsString = ""
     for host in HOSTS: hostsString += host[0] + " "
     __doc__ = __doc__.replace("[hosts]", hostsString)
-    
+
     def create(self, request, format=None):
         serializer = UrlAPISerializer(data=request.data)
         if serializer.is_valid():

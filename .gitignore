@@ -16,3 +16,8 @@ private_settings.py
 # it's better to write a script that will load the development
 # database with test values
 *.sqlite3
+
+# Exclude the Virtual Environment
+ushort
+
+UrlShortener.egg-info
