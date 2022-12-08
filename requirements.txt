@@ -1,6 +1,6 @@
 -e .
 appdirs==1.4.3
-certifi==2018.1.18
+certifi==2022.12.7
 chardet==3.0.4
 Django
 pytest-django
